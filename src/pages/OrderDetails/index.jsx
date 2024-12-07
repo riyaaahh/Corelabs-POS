@@ -89,7 +89,16 @@ const BillDetails = () => (
         <p className="delivery-line mb-0 m-0 p-0">A Moment of Delivered on Time</p>
         <img className="img-fluid delivery-bike" src={delivery} alt="delivery" />
       </div>
+      <a
+  href="#delivered"
+  className="btn theme-btn confirm-location-btn w-100"
+  data-bs-toggle="modal"
+  data-bs-target="#delivered"
+>
+  Confirm Location
+</a>
     </div>
+
   </section>
 );
 
@@ -117,50 +126,97 @@ const Index = () => (
     <TrackingSection />
     <BillDetails />
 
-    {/* Delivered Modal */}
-    <Modal id="delivered" title="Food Delivered!!">
-      <div className="text-center">
-        <img className="img-fluid confirm-offer for-light" src={success} alt="success-payment" />
-        <h5 className="mt-3 text-center w-75 light-text mx-auto">
-          Your food is delivered. Give us feedback and tell us how it was!
-        </h5>
-        <a href="#feedback" className="btn theme-btn w-100 mt-4" data-bs-target="#feedback" data-bs-toggle="modal" role="button">
+      {/* Delivered Modal */}
+      <div className="modal fade delivery-modal" id="delivered" tabIndex="-1">
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+      <div className="modal-title d-flex justify-content-end">
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body p-0">
+        <div className="confirm-title">
+          <img
+            className="img-fluid confirm-offer for-light"
+            src={success} // Updated the src name here
+            alt="success-payment"
+          />
+          <img
+            className="img-fluid confirm-offer for-dark"
+            src={success} // Updated the src name here
+            alt="success-payment"
+          />
+          <h2 className="dark-text text-center fw-semibold mt-2">Food Delivered!!</h2>
+          <h5 className="mt-3 text-center w-75 light-text mx-auto">
+            Your Food is Delivered, Give us feedback and tell me how it was !!
+          </h5>
+        </div>
+        <a
+          href="#feedback"
+          className="btn theme-btn w-100 mt-4"
+          data-bs-target="#feedback"
+          data-bs-toggle="modal"
+          role="button"
+        >
           Give Feedback Now
         </a>
+
         <a href="food-home.html" className="btn btn-link mt-0">
           I’ll do it later
         </a>
       </div>
-    </Modal>
+    </div>
+  </div>
+</div>
 
     {/* Feedback Modal */}
-    <Modal id="feedback" title="Feedback">
-      <div className="modal-body">
-        <div className="rating">
-          {[...Array(5)].map((_, i) => (
-            <i key={i} className={`ri-star-${i < 4 ? "fill" : "line"} star`}></i>
-          ))}
-        </div>
-        <textarea className="form-control feedback-box" rows="5" placeholder="Write your feedback here..."></textarea>
-        <a href="#done" className="btn theme-btn w-100 mt-4" data-bs-target="#done" data-bs-toggle="modal" role="button">
-          Submit Feedback
-        </a>
+    <div className="modal fade feedback-modal" id="feedback" tabindex="-1">
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+      <div className="modal-title">
+        <h3 className="fw-semibold">Feedback</h3>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </Modal>
+      <div className="rating">
+        <i className="ri-star-fill star"></i>
+        <i className="ri-star-fill star"></i>
+        <i className="ri-star-fill star"></i>
+        <i className="ri-star-fill star"></i>
+        <i className="ri-star-line star"></i>
+      </div>
+
+      <textarea className="form-control feedback-box" rows="5"></textarea>
+
+      <a href="#done" className="btn theme-btn w-100 mt-4" data-bs-target="#done" data-bs-toggle="modal" role="button">
+        Give Feedback Now
+      </a>
+    </div>
+  </div>
+</div>
 
     {/* Thank You Modal */}
-    <Modal id="done" title="Thank you!!">
-      <div className="text-center">
-        <img className="img-fluid confirm-offer for-light" src={giftwo} alt="thank-you" />
-        <h5 className="mt-3 text-center w-75 light-text mx-auto">
-          Thank you for your feedback, we appreciate your review.
-        </h5>
-        <a href="/Details" className="btn theme-btn w-100 mt-4" role="button">
-          Back to Home
-        </a>
+    <div className="modal fade done-modal" id="done" tabindex="-1">
+    <div className="modal-dialog modal-dialog-centered">
+      <div className="modal-content">
+        <div className="modal-title d-flex justify-content-end">
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div className="modal-body p-0">
+          <div className="confirm-title">
+            <img className="img-fluid confirm-offer for-light" src={giftwo}
+              alt="success-payment" />
+           
+            <h2 className="dark-text text-center fw-semibold mt-2">Thank you !!</h2>
+            <h5 className="mt-3 text-center w-75 light-text mx-auto">Thank you for your feedback, we appreciate your review
+            </h5>
+          </div>
+
+          <a href="food-home.html" className="btn theme-btn w-100 mt-4" role="button">Back to Home</a>
+        </div>
       </div>
-    </Modal>
+    </div>
   </div>
+  </div>
+
 );
 
 export default Index;
